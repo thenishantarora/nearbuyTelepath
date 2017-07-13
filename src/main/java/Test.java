@@ -55,7 +55,7 @@ public class Test {
 //		UniGrams.selectExpr("redemptionAddress_locality_name","words","words2","split(Unigrams, ',')[0] as Unigrams1","split(Unigrams, ',')[1] as Unigrams2");
 		NGram bigram = new NGram().setN(2).setInputCol("words2").setOutputCol("Bigrams");
 		Dataset<Row> BiGrams = bigram.transform(afterStop);
-		//Dataset<Row> Grams = UniGrams.as("d1").join(BiGrams.as("d2"),"redemptionAddress_locality_name").select("d1.*","d2.Bigrams");
+//		Dataset<Row> Grams = UniGrams.as("d1").join(BiGrams.as("d2"),"redemptionAddress_locality_name").select("d1.*","d2.Bigrams");
 
 		Dataset<Row> Grams = UniGrams.as("d1").join(BiGrams.as("d2"),"redemptionAddress_locality_name").select("d1.*","d2.Bigrams");
 		

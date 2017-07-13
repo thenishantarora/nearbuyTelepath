@@ -45,7 +45,7 @@ public class testString2 {
 			
 //			RandomForestClassificationModel dtModel = RandomForestClassificationModel.load("/Users/nishantarora/Downloads/randomForest");
 //			NaiveBayesModel dtModel = NaiveBayesModel.load("/Users/nishantarora/Downloads/NaiveBayes");
-			GBTClassificationModel dtModel = GBTClassificationModel.load("/Users/nishantarora/Downloads/gbTree");
+			GBTClassificationModel dtModel = GBTClassificationModel.load("/Users/nishantarora/Downloads/gbTreeee");
 //			System.out.println(dtModel.toDebugString());
 //			OneVsRestModel dtModel = OneVsRestModel.load("/Users/nishantarora/Downloads/oneVsAll");
 			String s = " ";

@@ -14,6 +14,7 @@ import org.apache.spark.sql.SparkSession;
 import org.apache.spark.ml.classification.DecisionTreeClassificationModel;
 import org.apache.spark.ml.feature.StopWordsRemover;
 import org.apache.spark.ml.classification.DecisionTreeClassifier;
+import org.apache.spark.ml.classification.GBTClassificationModel;
 import org.apache.spark.ml.classification.DecisionTreeClassificationModel;
 import org.apache.spark.ml.feature.NGram;
 import org.apache.spark.ml.linalg.Vector;
@@ -35,8 +36,9 @@ public class testingString {
 			SparkSession ssc = new SparkSession(sc.sc());
 			SQLContext spark = ssc.sqlContext();
 			
-			DecisionTreeClassificationModel dtModel = DecisionTreeClassificationModel.load("/Users/nishantarora/Downloads/hashAndW2VnewData" );
-					  
+//			DecisionTreeClassificationModel dtModel = DecisionTreeClassificationModel.load("/Users/nishantarora/Downloads/hashAndW2VnewData" );
+			GBTClassificationModel dtModel = GBTClassificationModel.load("/Users/nishantarora/Downloads/gbTreeee");
+
 			String s = " ";
 			Dataset<Row> string = spark.read().text("/Users/nishantarora/Downloads/string.txt");
 //			string.show(false);
@@ -74,7 +76,7 @@ public class testingString {
 			*/
 			Dataset<Row> finalWords = words.groupBy("uni").agg(org.apache.spark.sql.functions.collect_list("uni").as("uniArray"));
 //			finalWords.show(false);
-			Word2Vec word2Vec = new Word2Vec().setInputCol("uniArray").setOutputCol("w2v").setVectorSize(5).setMinCount(0);
+			Word2Vec word2Vec = new Word2Vec().setInputCol("uniArray").setOutputCol("w2v").setVectorSize(4).setMinCount(0);
 			Word2VecModel model = word2Vec.fit(finalWords);
 			Dataset<Row> w2v = model.transform(finalWords).select("uniArray","w2v");
 			int numFeatures =10;
